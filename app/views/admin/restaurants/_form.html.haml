@@ -7,6 +7,7 @@
           %li= msg
       %hr/
     = simple_form_for [:admin, @restaurant], :html => {:class => "form-group"}do |f|
+      = f.collection_select :category_id, Category.all, :id, :name, {prompt: true}, :class => "form-control"
       = f.input :name, :html => {:class => "form-control"}
       = f.input :tel, :html => {:class => "form-control"}
       = f.input :address, :html => {:class => "form-control"}
