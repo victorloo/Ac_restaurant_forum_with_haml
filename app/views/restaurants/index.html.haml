@@ -1,1 +1,16 @@
-%h1 This is the front-end index pages
+.container
+  %h1 餐廳前台
+  
+  .row
+    .col-md-12.infinite-table
+      %table.table.table-striped.table-bordered
+        %thead
+          %tr
+            %th
+            %th
+              Name
+        %tbody
+          = render 'restaurants', :object => @restaurants
+      .text-center
+        %p.pagination
+          = link_to_next_page(@restaurants, 'Next Page', :remote => true)
