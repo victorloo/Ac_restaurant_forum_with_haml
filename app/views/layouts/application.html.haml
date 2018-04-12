@@ -31,7 +31,15 @@
             %li= link_to "註冊", new_user_registration_path
             %li= link_to "登入", new_user_session_path
 
-  %p.notice= notice
-  %p.alert= alert
+  - if flash[:notice]
+    .container
+      .row
+        .alert.alert-success
+          = notice
+  - if flash[:alert]
+    .container
+      .row
+        .alert.alert-danger
+          = alert
     
   = yield
