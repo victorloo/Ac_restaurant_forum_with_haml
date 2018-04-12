@@ -11,5 +11,7 @@
   = f.input :address
   = f.input :opening_hours
   = f.input :description
+  = image_tag @restaurant.image, width: '300px' if @restaurant.image?
+  = f.input :image
 
   = f.submit
