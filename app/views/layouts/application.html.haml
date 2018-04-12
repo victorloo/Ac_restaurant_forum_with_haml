@@ -6,16 +6,32 @@
   = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
   = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 %body
+  %nav.navbar.navbar-default
+    .container-fluid
+      .navbar-header
+        %button.navbar-toggle.collapsed{:type => 'button', :data => {:toggle => 'collapse', :target => '#bs-example-navbar-collapse-1'}, :aria => {:expanded => 'false'}}
+          %span.sr-only
+            Toggle navigation
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        %a.navbar-brand
+          餐廳評論網
+
+      .collapse.navbar-collapse{:id => 'bs-example-navbar-collapse-1'}
+        %ul.pull-right.text-right.nav.navbar-nav
+          - if current_user
+            %li
+              %p.navbar-text
+                Hi,
+                = current_user.email
+            %li= link_to "登出", destroy_user_session_path, method: :delete
+            %li= link_to "修改密碼", edit_user_registration_path
+          - else
+            %li= link_to "註冊", new_user_registration_path
+            %li= link_to "登入", new_user_session_path
+
   %p.notice= notice
   %p.alert= alert
-  
-  - if current_user
-    Hi,
-    = current_user.email
-    = link_to "登出", destroy_user_session_path, method: :delete
-    = link_to "修改密碼", edit_user_registration_path
-  - else
-    = link_to "註冊", new_user_registration_path
-    = link_to "登入", new_user_session_path
-
+    
   = yield
