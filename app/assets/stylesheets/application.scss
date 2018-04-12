@@ -1,2 +1,16 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.restaurant-item {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 4px;
+  margin-bottom: 20px;
+  img {
+    max-height: 180px;
+    width: 100%;
+  }
+  .caption {
+    padding: 10px;
+  }
+}
