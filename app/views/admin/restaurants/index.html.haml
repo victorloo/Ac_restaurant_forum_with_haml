@@ -1,13 +1,28 @@
-%h1 餐廳後台
-
-%ul
-  - @restaurants.each do |restaurant|
-    %li
-      = restaurant.name
-      = link_to 'Show', admin_restaurant_path(restaurant)
-      = link_to 'Edit', edit_admin_restaurant_path(restaurant)
-      = link_to 'Delete', admin_restaurant_path(restaurant), method: :delete, data: { confirm: "Are you sure?" }
-    
-= link_to 'New Restaurant', new_admin_restaurant_path
-%br/
-= paginate @restaurants
+.container
+  %h1 餐廳後台
+  
+  .row
+    .col-md-12
+      %div
+        = link_to 'New Restaurant', new_admin_restaurant_path, :class => "btn btn-primary"
+      %br/
+      %table.table.table-striped.table-bordered
+        %thead
+          %tr
+            %th
+            %th
+              Name
+            %th
+        %tbody
+          - @restaurants.each do |restaurant|
+            %tr
+              %th{:scope => 'row'}
+                = restaurant.id
+              %td
+                = restaurant.name
+              %td
+                = link_to 'Show', admin_restaurant_path(restaurant)
+                = link_to 'Edit', edit_admin_restaurant_path(restaurant)
+                = link_to 'Delete', admin_restaurant_path(restaurant), method: :delete, data: { confirm: "Are you sure?" }
+      .text-center
+        = paginate @restaurants
