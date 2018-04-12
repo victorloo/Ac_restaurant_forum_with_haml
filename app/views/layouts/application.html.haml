@@ -34,12 +34,18 @@
   - if flash[:notice]
     .container
       .row
-        .alert.alert-success
+        .alert.alert-success.alert-dismissible{:role => 'alert'}
+          %button.close{:type => 'button', :data => {:dismiss => 'alert'}, :aria => {:label => 'Close'}}
+            %span{:aria => {:hidden => 'true'}}
+              &times;
           = notice
   - if flash[:alert]
     .container
       .row
-        .alert.alert-danger
+        .alert.alert-danger.alert-dismissible{:role => 'alert'}
+          %button.close{:type => 'button', :data => {:dismiss => 'alert'}, :aria => {:label => 'Close'}}
+            %span{:aria => {:hidden => 'true'}}
+              &times;
           = alert
     
   = yield
