@@ -1,17 +1,18 @@
-- if @restaurant.errors.any?
-  %h2 We have some errors here!
-  %ul
-    - @restaurant.errors.full_messages.each do |msg|
-      %li= msg
-      
+.container
+  .row
+    - if @restaurant.errors.any?
+      %h2 We have some errors here!
+      %ul
+        - @restaurant.errors.full_messages.each do |msg|
+          %li= msg
+      %hr/
+    = simple_form_for [:admin, @restaurant], :html => {:class => "form-group"}do |f|
+      = f.input :name, :html => {:class => "form-control"}
+      = f.input :tel, :html => {:class => "form-control"}
+      = f.input :address, :html => {:class => "form-control"}
+      = f.input :opening_hours, :html => {:class => "form-control"}
+      = f.input :description, :html => {:class => "form-control"}
+      = image_tag @restaurant.image, width: '300px' if @restaurant.image?
+      = f.input :image
 
-= simple_form_for [:admin, @restaurant] do |f|
-  = f.input :name
-  = f.input :tel
-  = f.input :address
-  = f.input :opening_hours
-  = f.input :description
-  = image_tag @restaurant.image, width: '300px' if @restaurant.image?
-  = f.input :image
-
-  = f.submit
+      = f.submit nil, class: "btn btn-primary"
