@@ -1,0 +1,15 @@
+- if @restaurant.errors.any?
+  %h2 We have some errors here!
+  %ul
+    - @restaurant.errors.full_messages.each do |msg|
+      %li= msg
+      
+
+= simple_form_for [:admin, @restaurant] do |f|
+  = f.input :name
+  = f.input :tel
+  = f.input :address
+  = f.input :opening_hours
+  = f.input :description
+
+  = f.submit
