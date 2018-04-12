@@ -20,6 +20,7 @@
             %th
             %th
               Category Name
+            %th
         %tbody
           - @categories.each do |category|
             %tr
@@ -27,3 +28,5 @@
                 = category.id
               %td
                 = category.name
+              %td
+                = link_to 'Edit', admin_categories_path(id: category.id)
