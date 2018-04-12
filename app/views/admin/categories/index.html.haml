@@ -5,6 +5,13 @@
     |
     = link_to 'Categories', admin_categories_path
   
+  .form-inline
+    = simple_form_for [:admin, @category], :html => {:class => "form-group"} do |f|
+      = f.input :name, placeholder: "Category Name", label: false, :html => {:class => "form-control"}
+
+      = f.submit nil, class: "btn btn-primary"
+  %br/
+
   .row
     .col-md-12
       %table.table.table-striped.table-bordered
