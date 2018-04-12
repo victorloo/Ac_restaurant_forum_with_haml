@@ -11,6 +11,8 @@
           %tr
             %th
             %th
+              Category
+            %th
               Name
             %th
         %tbody
@@ -18,6 +20,10 @@
             %tr
               %th{:scope => 'row'}
                 = restaurant.id
+              %td
+                [
+                = restaurant.category.name
+                ]
               %td
                 = restaurant.name
               %td
