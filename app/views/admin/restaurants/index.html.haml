@@ -6,7 +6,7 @@
     = link_to 'Categories', admin_categories_path
   
   .row
-    .col-md-12
+    .col-md-12.infinite-table
       %div
         = link_to 'New Restaurant', new_admin_restaurant_path, :class => "btn btn-primary"
       %br/
@@ -20,19 +20,7 @@
               Name
             %th
         %tbody
-          - @restaurants.each do |restaurant|
-            %tr
-              %th{:scope => 'row'}
-                = restaurant.id
-              %td
-                [
-                = restaurant.category.name
-                ]
-              %td
-                = restaurant.name
-              %td
-                = link_to 'Show', admin_restaurant_path(restaurant)
-                = link_to 'Edit', edit_admin_restaurant_path(restaurant)
-                = link_to 'Delete', admin_restaurant_path(restaurant), method: :delete, data: { confirm: "Are you sure?" }
+          = render 'restaurants', :object => @restaurants
       .text-center
-        = paginate @restaurants
+        %p.pagination
+          = link_to_next_page(@restaurants, 'Next Page', :remote => true)
