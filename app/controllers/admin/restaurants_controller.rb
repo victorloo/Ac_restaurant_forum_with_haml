@@ -34,6 +34,11 @@ class Admin::RestaurantsController < ApplicationController
     end
   end
 
+  def destroy
+    @restaurant.destroy
+    redirect_to admin_restaurants_path, alert: "Restaurant was deleted!"
+  end
+
   private
 
   def restaurant_params
