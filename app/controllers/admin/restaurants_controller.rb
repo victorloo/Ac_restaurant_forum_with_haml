@@ -4,7 +4,7 @@ class Admin::RestaurantsController < ApplicationController
   before_action :find_restaurant, only: [:edit, :update, :show, :destroy]
 
   def index
-    @restaurants = Restaurant.all
+    @restaurants = Restaurant.page(params[:page]).per(10)
   end
 
   def show
@@ -42,7 +42,7 @@ class Admin::RestaurantsController < ApplicationController
   private
 
   def restaurant_params
-    params.require(:restaurant).permit(:name, :tel, :address, :opening_hours, :description)
+    params.require(:restaurant).permit(:name, :tel, :address, :opening_hours, :description, :image)
   end
 
   def find_restaurant

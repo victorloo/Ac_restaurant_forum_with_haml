@@ -37,6 +37,11 @@ gem 'jbuilder', '~> 2.5'
 gem 'haml', '~> 5.0', '>= 5.0.4'
 gem 'simple_form', '~> 4.0'
 gem 'devise', '~> 4.4', '>= 4.4.3'
+gem 'carrierwave', '~> 1.2', '>= 1.2.2'
+gem 'ffaker', '~> 2.9'
+gem 'kaminari', '~> 1.1', '>= 1.1.1'
+gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
+gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
