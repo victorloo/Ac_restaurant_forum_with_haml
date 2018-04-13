@@ -12,13 +12,72 @@
           %h2= @user.name
           %p
             %strong= @user.email
+          %ul.list-unstyled.list-inline
+            %li
+              %strong
+                = @commented_restaurants.count
+                已評論餐廳
+            %li
+              %strong
+                = @favorited_restaurants.count
+                收藏的餐廳
+            %li
+              %strong
+                = @followings.count
+                followings
+            %li
+              %strong
+                = @followers.count
+                followers
           %div= simple_format @user.intro
           - if @user.email == current_user.email
-            = link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary"
+            = link_to 'Edit Profile', edit_user_path(@user), class: "user-edit btn btn-primary"
           .clearfix
       %br/
+      %br/
 
-      %div
+      .col-md-4
+        .panel.panel-default
+          .panel-heading
+            %h3.panel-title
+              = @followings.count
+              %strong
+                followings
+          %ul.list-group
+            - @followings.each do |following|
+              %li.list-group-item
+                = link_to user_path(following) do
+                  - if following.avatar?
+                    = image_tag following.avatar, height: 30, width: 30, class: "img-circle"
+                  - else
+                    %img.img-circle(src="http://via.placeholder.com/30x30")/
+                  = following.name
+        .panel.panel-default
+          .panel-heading
+            %h3.panel-title
+              = @followers.count
+              %strong
+                followers
+          %ul.list-group
+            - @followers.each do |follower|
+              %li.list-group-item
+                = link_to user_path(follower) do
+                  - if follower.avatar?
+                    = image_tag follower.avatar, height: 30, width: 30, class: "img-circle"
+                  - else
+                    %img.img-circle(src="http://via.placeholder.com/30x30")/
+                  = follower.name
+        .panel.panel-default
+          .panel-heading
+            %h3.panel-title
+              = @friends.count
+              %strong
+                friends
+          %ul.list-group
+            %li.list-group-item
+              = link_to '我的好友',friend_list_user_path
+
+      .col-md-8
         .panel.panel-default
           .panel-heading
             %h3.panel-title
@@ -29,5 +88,25 @@
             - @commented_restaurants.each do |restaurant|
               = link_to restaurant_path(restaurant) do
                 .my-restaurant
-                  %div= image_tag restaurant.image, class: "img-responsive img-rounded"
+                  %div
+                    - if restaurant.image?
+                      = image_tag restaurant.image, class: "img-responsive img-rounded"
+                    - else
+                      %img.img-rounded(src="http://via.placeholder.com/150x150")/
                   %h5= restaurant.name
+        .panel.panel-default
+          .panel-heading
+            %h3.panel-title
+              %strong
+                = @favorited_restaurants.count
+                收藏的餐廳
+          .panel-body
+            - @favorited_restaurants.each do |restaurant|
+              .my-restaurant
+                %div
+                  = link_to restaurant_path(restaurant) do
+                    - if restaurant.image?
+                      = image_tag restaurant.image, class: "img-responsive img-rounded"
+                    - else
+                      %img.img-rounded(src="http://via.placeholder.com/150x150")/
+                    %h5= restaurant.name

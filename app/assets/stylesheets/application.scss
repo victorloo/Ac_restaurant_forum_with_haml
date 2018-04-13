@@ -31,6 +31,10 @@
   }
 }
 
+.ranking-item {
+  margin-bottom: 15px;
+}
+
 .restaurant-item {
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -42,5 +46,17 @@
   }
   .caption {
     padding: 10px;
+  }
+}
+
+.user-edit {
+  margin-bottom: 30px;
+}
+
+.user-item {
+  margin-bottom: 15px;
+  img {
+    width: 128px;
+    height: 128px;
   }
 }

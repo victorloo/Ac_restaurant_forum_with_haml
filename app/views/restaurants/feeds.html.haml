@@ -1,0 +1,41 @@
+.container
+  .row
+    %ul.nav.nav-tabs
+      %li{:role => 'presentation'}
+        = link_to '首頁', root_path
+      %li.active{:role => 'presentation'}
+        = link_to '最新動態', feeds_restaurants_path
+      %li{:role => 'presentation'}
+        = link_to 'TOP10人氣餐廳', ranking_restaurants_path
+      %li{:role => 'presentation'}
+        = link_to '美食達人', users_path
+%br/
+.container
+  .row
+    .col-md-10.col-md-offset-1
+      %h1 餐廳最新動態
+      %hr/
+      .col-md-6
+        .panel.panel-default
+          .panel-heading 最新動態
+          .panel-body
+            - @recent_restaurants.each do |restaurant|
+              %div
+                %h4
+                  = link_to restaurant.name, restaurant_path(restaurant)
+                  %small= restaurant.category.name
+                %p= truncate(restaurant.description, length: 80)
+                %hr/
+      .col-md-6
+        .panel.panel-default
+          .panel-heading 最新評論
+          .panel-body
+            - @recent_comments.each do |comment|
+              %div
+                %h4= link_to comment.restaurant.name, restaurant_path(comment.restaurant)
+                %p
+                  = truncate(comment.content, length: 80)
+                  %small
+                    by
+                    = link_to comment.user.name, user_path(comment.user)
+                %hr/
