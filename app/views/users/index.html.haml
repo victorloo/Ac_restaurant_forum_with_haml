@@ -1,0 +1,27 @@
+.container
+  .row
+    %ul.nav.nav-tabs
+      %li{:role => 'presentation'}
+        = link_to '首頁', root_path
+      %li{:role => 'presentation'}
+        = link_to '最新動態', feeds_restaurants_path
+      %li{:role => 'presentation'}
+        = link_to 'TOP10人氣餐廳', ranking_restaurants_path
+      %li.active{:role => 'presentation'}
+        = link_to '美食達人', users_path
+%br/
+.container
+  .row
+    .col-md-12
+      .page-header
+        %h1 美食達人
+
+    - @users.each do |user|
+      .col-md-3.col-sm-4.col-xs-6.text-center.user-item
+        = link_to user_path(user) do
+          - if user.avatar?
+            = image_tag user.avatar, class: "img-rounded"
+          - else
+            %img.img-rounded(src="http://via.placeholder.com/128x128")/
+          %h4= user.name
+        = render 'shared/follow', object: user
