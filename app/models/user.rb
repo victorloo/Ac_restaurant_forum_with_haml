@@ -7,7 +7,7 @@ class User < ApplicationRecord
   validates :name, presence: true
   mount_uploader :avatar, AvatarUploader
   
-  has_many :comments
+  has_many :comments, dependent: :restrict_with_error
   has_many :restaurants, through: :comments
 
   def admin?
