@@ -26,5 +26,7 @@
           %h4= user.name
         = render 'shared/follow', object: user
         - if user != current_user
-          = link_to 'Friend', friendships_path(friend_id: user),method: :post
-          = link_to 'Unfriend', friendship_path(user), method: :delete
+          - if current_user.friend?(user)
+            = link_to 'Unfriend', friendship_path(user), method: :delete
+          - else
+            = link_to 'Friend', friendships_path(friend_id: user),method: :post
