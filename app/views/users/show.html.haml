@@ -19,6 +19,15 @@
       %br/
 
       %div
-        %div
-          - @commented_restaurants.each do |restaurant|
-            %h5= restaurant.name
+        .panel.panel-default
+          .panel-heading
+            %h3.panel-title
+              %strong
+                = @commented_restaurants.count
+                已評論餐廳
+          .panel-body
+            - @commented_restaurants.each do |restaurant|
+              = link_to restaurant_path(restaurant) do
+                .my-restaurant
+                  %div= image_tag restaurant.image, class: "img-responsive img-rounded"
+                  %h5= restaurant.name
