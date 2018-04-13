@@ -7,5 +7,6 @@
         %p.label.label-default= restaurant.category.name
         %p= truncate(restaurant.description, length: 80)
         = render 'shared/favorite', object: restaurant
+        = render 'shared/like', object: restaurant
 .text-center
   = paginate @restaurants
