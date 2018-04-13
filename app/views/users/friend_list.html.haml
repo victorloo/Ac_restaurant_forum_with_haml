@@ -1,0 +1,27 @@
+.container
+  .row
+    %ul.nav.nav-tabs
+      %li{:role => 'presentation'}
+        = link_to user_path do
+          Back to
+          = @user.name
+      %li.active{:role => 'presentation'}
+        = link_to 'Friend List', users_path
+%br/
+.container
+  .row
+    .col-md-12
+      .page-header
+        %h1 Friend List
+
+    - @users.each do |user|
+      .col-md-3.col-sm-4.col-xs-6.text-center.user-item
+        = link_to user_path(user) do
+          - if user.avatar?
+            = image_tag user.avatar, class: "img-rounded"
+          - else
+            %img.img-rounded(src="http://via.placeholder.com/128x128")/
+          %h4= user.name
+        = render 'shared/follow', object: user
+        = render 'shared/friend', object: user
+  %hr/
