@@ -29,7 +29,7 @@
   .row
     - @restaurant.comments.each do |comment|
       %div
-        %h4= comment.user.email.split('@').first
+        %h4= comment.user.name
         %p= simple_format comment.content
         %p.text-muted
           %em

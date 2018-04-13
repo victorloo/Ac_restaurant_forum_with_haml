@@ -1,6 +1,28 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.edit_user{
+  img {
+    width: 50px;
+    margin: 10px;
+  }
+}
+
+.my-restaurant {
+  display: inline-block;
+  text-align: center;
+  padding: 7px 7px 0 7px;
+  div {
+    height: 60px;
+  }
+  img {
+    max-height: 100%;
+  }
+  &:hover {
+    background-color: #eee;
+  }
+}
+
 .nav-pills-center {
   text-align: center;
   li {
