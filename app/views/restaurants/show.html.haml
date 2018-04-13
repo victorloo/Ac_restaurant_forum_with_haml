@@ -25,6 +25,8 @@
       %hr/
       = link_to 'Dashboard', dashboard_restaurant_path(@restaurant), class: "btn btn-primary"
       = render 'shared/favorite', object: @restaurant
+      = link_to 'Like', like_restaurant_path(@restaurant), method: :post, class: "btn btn-warning"
+      = link_to 'Unlike', unlike_restaurant_path(@restaurant), method: :post, class: "btn btn-danger"
     .clearfix
     %hr/
 
