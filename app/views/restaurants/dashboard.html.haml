@@ -1,0 +1,13 @@
+%h1
+  = @restaurant.name
+  's Dashboard
+%hr/
+%ul
+  %li
+    有
+    = @restaurant.comments.count
+    筆評論
+  %li
+    這家餐廳的平均價位是 $ XXX
+  %li
+    有XX人收藏這家餐廳
