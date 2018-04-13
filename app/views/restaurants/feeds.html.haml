@@ -1,0 +1,20 @@
+%h1 餐廳動態
+
+%div
+  %h3 最新餐廳
+
+  - @recent_restaurants.each do |restaurant|
+    %h4= link_to restaurant.name, restaurant_path(restaurant)
+    %p= restaurant.category.name
+    %p= restaurant.description
+    %hr/
+%div
+  %h3 最新評論
+  
+  - @recent_comments.each do |comment|
+    %h4= link_to comment.restaurant.name, restaurant_path(comment.restaurant)
+    %p= comment.content
+    %p
+      by
+      = link_to comment.user.name, user_path(comment.user)
+    %hr/
