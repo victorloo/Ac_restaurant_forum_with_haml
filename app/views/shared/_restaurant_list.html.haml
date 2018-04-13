@@ -3,11 +3,9 @@
     .restaurant-item
       = image_tag restaurant.image, class: "img-responsive center-block"
       .caption
-        %h3
-          = link_to restaurant.name, restaurant_path(restaurant)
-        %p.label.label-default
-          = restaurant.category.name
-        %p
-          = truncate(restaurant.description, length: 80)
+        %h3= link_to restaurant.name, restaurant_path(restaurant)
+        %p.label.label-default= restaurant.category.name
+        %p= truncate(restaurant.description, length: 80)
+        = render 'shared/favorite', object: restaurant
 .text-center
   = paginate @restaurants
