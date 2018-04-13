@@ -1,0 +1,14 @@
+%h1
+  Top 10 人氣餐廳
+  %small
+    (收藏數最高)
+
+- @restaurants.each do |restaurant|
+  = image_tag restaurant.image
+  %h4= restaurant.name
+  %span
+    收藏數︰
+    = restaurant.favorites_count
+  %p= truncate(restaurant.description, length: 200)
+  = link_to 'Show', restaurant_path(restaurant), class: "btn btn-primary"
+  = render 'shared/favorite', object: restaurant

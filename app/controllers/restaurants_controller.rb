@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  before_action :find_restaurant, except: [:index, :feeds]
+  before_action :find_restaurant, except: [:index, :feeds, :ranking]
   
   def index
     @restaurants = Restaurant.page(params[:page]).per(9)
@@ -42,6 +42,10 @@ class RestaurantsController < ApplicationController
     like.destroy_all
 
     redirect_back(fallback_location: root_path)
+  end
+
+  def ranking
+    @restaurants = Restaurant.order(favorites_count: :desc).limit(10)
   end
   
   private
