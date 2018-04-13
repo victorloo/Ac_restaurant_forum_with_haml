@@ -1,0 +1,11 @@
+.container
+  .row
+    .col-md-6.col-md-offset-3
+      %h3
+        Edit Profile
+      = simple_form_for @user, :html => {:class => "form-group"} do |f|
+        = f.input :name, :html => {:class => "form-control"}
+        = f.input :intro, label: "自我介紹", :html => {:class => "form-control"}
+
+        = f.submit 'Update', class: "btn btn-primary"
+        = f.button :button, 'Cancel', type: :reset, class: "btn btn-default"
