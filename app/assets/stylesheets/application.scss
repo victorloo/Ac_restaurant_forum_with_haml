@@ -1,6 +1,13 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.edit_user{
+  img {
+    width: 50px;
+    margin: 10px;
+  }
+}
+
 .nav-pills-center {
   text-align: center;
   li {
