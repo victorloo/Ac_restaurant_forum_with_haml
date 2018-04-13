@@ -27,6 +27,15 @@
 
 .container
   .row
+    - @restaurant.comments.each do |comment|
+      %div
+        %h4= comment.user.email.split('@').first
+        %p= simple_format comment.content
+        %p.text-muted
+          %em
+            = time_ago_in_words(comment.created_at)
+            ago -
+    %hr/
     = simple_form_for([@restaurant, @comment]) do |f|
       = f.input :content, placeholder: "留個言吧", label: false, :html => {:class => "form-control"}
 
