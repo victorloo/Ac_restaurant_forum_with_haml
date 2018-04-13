@@ -24,4 +24,12 @@ class User < ApplicationRecord
   # Someone followed current_user
   has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id"
   has_many :followers, through: :inverse_followships, source: :user
+
+  # Current_user friended someone
+  has_many :friendships, dependent: :destroy
+  has_many :friends, through: :friendships
+
+  # Someone friended current_user
+  has_many :inverse_friendships, class_name: "Friendship", foreign_key: "friend_id"
+  has_many :ivfriends, through: :inverse_friendships, source: :user
 end
