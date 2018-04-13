@@ -20,12 +20,12 @@ ActiveRecord::Schema.define(version: 20180413080544) do
 
   create_table "comments", force: :cascade do |t|
     t.text "content"
-    t.integer "restaurant_id_id"
-    t.integer "user_id_id"
+    t.integer "restaurant_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["restaurant_id_id"], name: "index_comments_on_restaurant_id_id"
-    t.index ["user_id_id"], name: "index_comments_on_user_id_id"
+    t.index ["restaurant_id"], name: "index_comments_on_restaurant_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "restaurants", force: :cascade do |t|

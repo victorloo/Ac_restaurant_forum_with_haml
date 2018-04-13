@@ -24,3 +24,11 @@
       = simple_format @restaurant.description
     .clearfix
     %hr/
+
+.container
+  .row
+    = simple_form_for([@restaurant, @comment]) do |f|
+      = f.input :content, placeholder: "留個言吧", label: false, :html => {:class => "form-control"}
+
+      = f.submit nil, class: "btn btn-primary"
+      = f.button :button, 'Cancel', type: :reset, class: "btn btn-default"
