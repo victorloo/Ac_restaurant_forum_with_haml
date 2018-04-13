@@ -1,4 +1,5 @@
 class Restaurant < ApplicationRecord
+  include RestaurantsHelper
   mount_uploader :image, PhotoUploader
   validates :name, presence: true
 
