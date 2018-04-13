@@ -17,6 +17,11 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liked_restaurants, through: :likes, source: :restaurant
 
+  # Current_user followed someone
   has_many :followships, dependent: :destroy
   has_many :followings, through: :followships
+
+  # Someone followed current_user
+  has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id"
+  has_many :followers, through: :inverse_followships, source: :user
 end
