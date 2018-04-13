@@ -4,9 +4,11 @@ class FollowshipsController < ApplicationController
     @followship = current_user.followships.build(following_id: params[:following_id])
 
     if @followship.save
-      redirect_back(fallback_location: root_path), notice: "Successfully followed"
+      flash[:notice] = "Successfully followed"
+      redirect_back(fallback_location: root_path)
     else
-      redirect_back(fallback_location: root_path), alert: "#{@followship.errors.full_messages.to_sentence}"
+      flash[:alert] = @followship.errors.full_messages.to_sentence
+      redirect_back(fallback_location: root_path)
     end
   end
 end
