@@ -17,3 +17,8 @@
             = link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary"
           .clearfix
       %br/
+
+      %div
+        %div
+          - @commented_restaurants.each do |restaurant|
+            %h5= restaurant.name
