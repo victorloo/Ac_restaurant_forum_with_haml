@@ -13,7 +13,7 @@ module UsersHelper
 
   def all_friends
     my_friends = self.friends
-    ivfriends = Friendship.where(friend_id: self.id)
+    ivfriends = self.ivfriends
     all_friends = (my_friends + ivfriends).uniq.sort
   end
 end
