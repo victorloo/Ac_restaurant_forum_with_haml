@@ -1,6 +1,4 @@
-class Admin::RestaurantsController < ApplicationController
-  before_action :authenticate_user!
-  before_action :authenticate_admin
+class Admin::RestaurantsController < Admin::BaseController
   before_action :find_restaurant, only: [:edit, :update, :show, :destroy]
 
   def index
@@ -42,7 +40,7 @@ class Admin::RestaurantsController < ApplicationController
   private
 
   def restaurant_params
-    params.require(:restaurant).permit(:name, :tel, :address, :opening_hours, :description, :image)
+    params.require(:restaurant).permit(:name, :tel, :address, :opening_hours, :description, :image, :category_id)
   end
 
   def find_restaurant

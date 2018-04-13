@@ -1,0 +1,33 @@
+.container
+  .row
+    .col-md-10.col-md-offset-1
+      .page-header
+        .col-md-3.col-sm-4
+          .text-center
+            - if @user.avatar?
+              = image_tag @user.avatar, class: "img-responsive img-rounded"
+            - else
+              %img.img-responsive.img-rounded(src="http://via.placeholder.com/350x350")/
+        .col-md-9.col-sm-8
+          %h2= @user.name
+          %p
+            %strong= @user.email
+          %div= simple_format @user.intro
+          - if @user.email == current_user.email
+            = link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary"
+          .clearfix
+      %br/
+
+      %div
+        .panel.panel-default
+          .panel-heading
+            %h3.panel-title
+              %strong
+                = @commented_restaurants.count
+                已評論餐廳
+          .panel-body
+            - @commented_restaurants.each do |restaurant|
+              = link_to restaurant_path(restaurant) do
+                .my-restaurant
+                  %div= image_tag restaurant.image, class: "img-responsive img-rounded"
+                  %h5= restaurant.name

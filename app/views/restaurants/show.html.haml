@@ -1,0 +1,45 @@
+.container
+  .row
+    .col-md-12
+      %h1= @restaurant.name
+      %p= @restaurant.category.name
+    .col-md-4
+      = image_tag @restaurant.image, class: "img-responsive center-block"
+      %br/
+      .well
+        %ul.list-unstyled
+          %li
+            %strong
+              Opening Hours:
+            = @restaurant.opening_hours
+          %li
+            %strong
+              Tel:
+            = @restaurant.tel
+          %li
+            %strong
+              Address:
+            = @restaurant.address
+    .col-md-8
+      = simple_format @restaurant.description
+    .clearfix
+    %hr/
+
+.container
+  .row
+    - @restaurant.comments.each do |comment|
+      %div
+        %h4= comment.user.name
+        %p= simple_format comment.content
+        %p.text-muted
+          %em
+            = time_ago_in_words(comment.created_at)
+            ago -
+          - if current_user.admin?
+            = link_to 'Delete', restaurant_comment_path(@restaurant, comment), method: :delete, data: { confirm: "Oops! You sure??" }
+    %hr/
+    = simple_form_for([@restaurant, @comment]) do |f|
+      = f.input :content, placeholder: "留個言吧", label: false, :html => {:class => "form-control"}
+
+      = f.submit nil, class: "btn btn-primary"
+      = f.button :button, 'Cancel', type: :reset, class: "btn btn-default"
