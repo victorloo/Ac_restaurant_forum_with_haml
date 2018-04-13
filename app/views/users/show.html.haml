@@ -95,8 +95,9 @@
             - @favorited_restaurants.each do |restaurant|
               .my-restaurant
                 %div
-                  - if restaurant.image?
-                    = image_tag restaurant.image, class: "img-responsive img-rounded"
-                  - else
-                    %img.img-rounded(src="http://via.placeholder.com/150x150")/
-                %h5= restaurant.name
+                  = link_to restaurant_path(restaurant) do
+                    - if restaurant.image?
+                      = image_tag restaurant.image, class: "img-responsive img-rounded"
+                    - else
+                      %img.img-rounded(src="http://via.placeholder.com/150x150")/
+                    %h5= restaurant.name
