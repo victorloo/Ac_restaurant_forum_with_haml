@@ -34,7 +34,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'haml', '~> 5.0', '>= 5.0.4'
 gem 'simple_form', '~> 5.0'
-gem 'devise', '~> 4.4', '>= 4.4.3'
+gem 'devise', '~> 4.7'
 gem 'carrierwave', '~> 1.2', '>= 1.2.2'
 gem 'ffaker', '~> 2.9'
 gem 'kaminari', '~> 1.1', '>= 1.1.1'
